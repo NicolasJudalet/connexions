@@ -27,5 +27,6 @@ module.exports = {
         icon: "assets/america-icon.png",
       },
     },
+    "gatsby-plugin-resolve-src",
   ],
 }

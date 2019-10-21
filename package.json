@@ -16,10 +16,12 @@
     "dotenv": "^8.2.0",
     "gatsby": "^2.16.1",
     "gatsby-plugin-manifest": "^2.2.23",
+    "gatsby-plugin-resolve-src": "^2.0.0",
     "gatsby-source-contentful": "^2.1.50",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "styled-components": "^4.4.0"
   },
   "devDependencies": {
     "prettier": "^1.18.2"
