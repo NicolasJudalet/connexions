@@ -21,5 +21,11 @@ module.exports = {
         accessToken,
       },
     },
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        icon: "assets/america-icon.png",
+      },
+    },
   ],
 }
