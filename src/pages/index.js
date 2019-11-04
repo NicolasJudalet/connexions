@@ -1,35 +1,27 @@
-import React from "react"
-import Helmet from "react-helmet"
-import { StaticQuery, graphql } from "gatsby"
+import React, { useState } from "react"
 
-import Navigation from "components/Navigation"
+import HomePage from "./HomePage/HomePage"
+import LoginPage from "./Login"
 
-const HomePage = () => (
-  <StaticQuery
-    query={graphql`
-      query HomePage {
-        contentfulBlogPost {
-          title
-          content {
-            content
-          }
-        }
-      }
-    `}
-    render={({
-      contentfulBlogPost: {
-        title,
-        content: { content },
-      },
-    }) => (
-      <>
-        <Helmet title="Connexions BLOG" />
-        <Navigation />
-        <h1>{title}</h1>
-        <p>{content}</p>
-      </>
-    )}
-  />
-)
+const App = () => {
+  const [isConnected, setIsConnected] = useState(false)
+  const [hasLoginError, setHasLoginError] = useState(false)
 
-export default HomePage
+  function login(passwordInput) {
+    const appPassword = "appPassword" // To be changed for environment variable
+    setIsConnected(passwordInput === appPassword)
+    setHasLoginError(passwordInput !== appPassword)
+    console.log(hasLoginError)
+  }
+
+  return isConnected ? (
+    <HomePage />
+  ) : (
+    <LoginPage
+      login={passwordInput => login(passwordInput)}
+      hasLoginError={hasLoginError}
+    />
+  )
+}
+
+export default App
