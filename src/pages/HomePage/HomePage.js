@@ -2,7 +2,7 @@ import React from "react"
 import Helmet from "react-helmet"
 import { StaticQuery, graphql } from "gatsby"
 
-import Navigation from "components/Navigation"
+import Header from "components/Header"
 
 const HomePage = () => (
   <StaticQuery
@@ -24,7 +24,7 @@ const HomePage = () => (
     }) => (
       <>
         <Helmet title="Connexions BLOG" />
-        <Navigation />
+        <Header isConnected={true} />
         <h1>{title}</h1>
         <p>{content}</p>
       </>

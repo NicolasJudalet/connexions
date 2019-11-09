@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import Navigation from "components/Navigation"
+import Header from "components/Header"
 import Styles from "./LoginPage.style"
 
 const LoginPage = ({ login, hasLoginError }) => {
@@ -11,7 +11,7 @@ const LoginPage = ({ login, hasLoginError }) => {
 
   return (
     <>
-      <Navigation />
+      <Header isConnected={false} />
       <Styles.Wrapper>
         <Styles.Label>
           <Styles.Title>

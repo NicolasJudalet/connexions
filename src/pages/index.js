@@ -11,7 +11,6 @@ const App = () => {
     const appPassword = "appPassword" // To be changed for environment variable
     setIsConnected(passwordInput === appPassword)
     setHasLoginError(passwordInput !== appPassword)
-    console.log(hasLoginError)
   }
 
   return isConnected ? (
