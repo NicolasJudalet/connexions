@@ -8,13 +8,17 @@ const App = () => {
   const [hasLoginError, setHasLoginError] = useState(false)
 
   function login(passwordInput) {
-    const appPassword = "appPassword" // To be changed for environment variable
+    const appPassword = "a" // To be changed for environment variable
     setIsConnected(passwordInput === appPassword)
     setHasLoginError(passwordInput !== appPassword)
   }
 
+  function logout() {
+    setIsConnected(false)
+  }
+
   return isConnected ? (
-    <HomePage />
+    <HomePage logout={() => logout()} />
   ) : (
     <LoginPage
       login={passwordInput => login(passwordInput)}

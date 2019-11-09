@@ -1,12 +1,13 @@
 import React from "react"
 
 import HomeButton from "components/HomeButton"
+import ExitButton from "components/ExitButton"
 
 import whiteLogo from "../../../assets/app-logo-white.png"
 import blackLogo from "../../../assets/app-logo-black.png"
 import Style from "./Header.style"
 
-export default ({ isConnected }) => (
+export default ({ isConnected, logout }) => (
   <nav role="Header">
     <Style.Wrapper isConnected={isConnected}>
       {isConnected && <HomeButton />}
@@ -17,6 +18,7 @@ export default ({ isConnected }) => (
         />
         <Style.SiteTitle isConnected={isConnected}>Connexions</Style.SiteTitle>
       </Style.Link>
+      {isConnected && <ExitButton logout={() => logout()} />}
     </Style.Wrapper>
   </nav>
 )

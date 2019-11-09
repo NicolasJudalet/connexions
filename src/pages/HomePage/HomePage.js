@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from "gatsby"
 
 import Header from "components/Header"
 
-const HomePage = () => (
+const HomePage = ({ logout }) => (
   <StaticQuery
     query={graphql`
       query App {
@@ -24,7 +24,7 @@ const HomePage = () => (
     }) => (
       <>
         <Helmet title="Connexions BLOG" />
-        <Header isConnected={true} />
+        <Header isConnected={true} logout={() => logout()} />
         <h1>{title}</h1>
         <p>{content}</p>
       </>
