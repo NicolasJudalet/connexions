@@ -5,6 +5,7 @@ import { StaticQuery, graphql } from "gatsby"
 import Header from "components/Header"
 import Style from "./HomePage.style"
 import TripData from "../../components/TripData"
+import PhotoHighlights from "../../components/PhotoHighlights"
 
 const HomePage = ({ logout }) => (
   <StaticQuery
@@ -29,6 +30,7 @@ const HomePage = ({ logout }) => (
         <Header isConnected={true} logout={() => logout()} />
         <Style.Wrapper>
           <TripData />
+          <PhotoHighlights />
           <h1>{title}</h1>
           <p>{content}</p>
         </Style.Wrapper>

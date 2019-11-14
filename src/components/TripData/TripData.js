@@ -8,7 +8,6 @@ const TripData = () => (
   <Style.Wrapper>
     <DaysCounter />
     <TripTimeline />
-    <div>PolarStepLink</div>
   </Style.Wrapper>
 )
 

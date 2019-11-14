@@ -1,12 +1,12 @@
 import styled from "styled-components"
 
-import { appBlue, marginS, fontSizeL, fontSizeXXL, normalFont } from "styles"
+import { appBlue, marginL, fontSizeL, fontSizeXXL, normalFont } from "styles"
 
 export default {
   Wrapper: styled.div`
     display: flex;
     flex-direction: column;
-    margin: ${marginS};
+    margin-right: ${marginL};
   `,
   Text: styled.span`
     font-family: ${normalFont};

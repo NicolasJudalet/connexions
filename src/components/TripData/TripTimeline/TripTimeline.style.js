@@ -1,12 +1,11 @@
 import styled from "styled-components"
 
-import { appBlue, white, marginS } from "styles"
+import { appBlue } from "styles"
 
 export default {
   Wrapper: styled.div`
     display: flex;
     align-items: center;
-    margin: ${marginS};
     flex-grow: 1;
   `,
   Line: styled.div`
