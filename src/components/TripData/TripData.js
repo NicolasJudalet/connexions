@@ -2,11 +2,12 @@ import React from "react"
 
 import Style from "./TripData.style"
 import DaysCounter from "./DaysCounter"
+import TripTimeline from "./TripTimeline"
 
 const TripData = () => (
   <Style.Wrapper>
     <DaysCounter />
-    <div>TripTimeline</div>
+    <TripTimeline />
     <div>PolarStepLink</div>
   </Style.Wrapper>
 )
