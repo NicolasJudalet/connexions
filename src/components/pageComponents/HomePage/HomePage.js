@@ -4,8 +4,8 @@ import { StaticQuery, graphql } from "gatsby"
 
 import Header from "components/Header"
 import Style from "./HomePage.style"
-import TripData from "../../components/TripData"
-import PhotoHighlights from "../../components/PhotoHighlights"
+import TripData from "../../TripData"
+import PhotoHighlights from "../../PhotoHighlights"
 
 const HomePage = ({ logout }) => (
   <StaticQuery

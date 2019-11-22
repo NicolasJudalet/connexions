@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 
-import HomePage from "./HomePage/HomePage"
-import LoginPage from "./Login"
+import HomePage from "../components/pageComponents/HomePage"
+import LoginPage from "../components/pageComponents/Login"
 
 const App = () => {
   const [isConnected, setIsConnected] = useState(false)
