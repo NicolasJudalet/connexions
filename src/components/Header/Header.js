@@ -8,17 +8,15 @@ import blackLogo from "../../../assets/app-logo-black.png"
 import Style from "./Header.style"
 
 export default ({ isConnected, logout }) => (
-  <nav role="Header">
-    <Style.Wrapper isConnected={isConnected}>
-      {isConnected && <HomeButton />}
-      <Style.Link to="/">
-        <Style.Logo
-          src={isConnected ? whiteLogo : blackLogo}
-          alt="Connexions App Logo"
-        />
-        <Style.SiteTitle isConnected={isConnected}>Connexions</Style.SiteTitle>
-      </Style.Link>
-      {isConnected && <ExitButton logout={() => logout()} />}
-    </Style.Wrapper>
-  </nav>
+  <Style.Wrapper isConnected={isConnected}>
+    {isConnected && <HomeButton />}
+    <Style.Link to="/">
+      <Style.Logo
+        src={isConnected ? whiteLogo : blackLogo}
+        alt="Connexions App Logo"
+      />
+      <Style.SiteTitle isConnected={isConnected}>Connexions</Style.SiteTitle>
+    </Style.Link>
+    {isConnected && <ExitButton logout={() => logout()} />}
+  </Style.Wrapper>
 )
