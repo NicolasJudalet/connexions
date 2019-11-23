@@ -3,11 +3,12 @@ import Helmet from "react-helmet"
 import { StaticQuery, graphql } from "gatsby"
 
 import Header from "components/Header"
+import { isLoggedIn } from "utils/auth"
 import Style from "./HomePage.style"
 import TripData from "../../TripData"
 import PhotoHighlights from "../../PhotoHighlights"
 
-const HomePage = ({ logout }) => (
+const HomePage = () => (
   <StaticQuery
     query={graphql`
       query App {
@@ -27,7 +28,7 @@ const HomePage = ({ logout }) => (
     }) => (
       <>
         <Helmet title="Connexions BLOG" />
-        <Header isConnected={true} logout={() => logout()} />
+        <Header isConnected={isLoggedIn()} />
         <Style.Wrapper>
           <TripData />
           <PhotoHighlights />

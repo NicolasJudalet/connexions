@@ -1,29 +1,11 @@
-import React, { useState } from "react"
+import React from "react"
+import { navigate } from "@reach/router"
 
-import HomePage from "../components/pageComponents/HomePage"
+import { isLoggedIn } from "utils/auth.js"
 import LoginPage from "../components/pageComponents/Login"
 
 const App = () => {
-  const [isConnected, setIsConnected] = useState(false)
-  const [hasLoginError, setHasLoginError] = useState(false)
-
-  function login(passwordInput) {
-    setIsConnected(passwordInput === process.env.GATSBY_APP_PASSWORD)
-    setHasLoginError(passwordInput !== process.env.GATSBY_APP_PASSWORD)
-  }
-
-  function logout() {
-    setIsConnected(false)
-  }
-
-  return isConnected ? (
-    <HomePage logout={() => logout()} />
-  ) : (
-    <LoginPage
-      login={passwordInput => login(passwordInput)}
-      hasLoginError={hasLoginError}
-    />
-  )
+  return isLoggedIn() ? navigate("/home") : <LoginPage />
 }
 
 export default App

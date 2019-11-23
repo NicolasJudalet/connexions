@@ -1,9 +1,19 @@
 import React, { useState } from "react"
+import { navigate } from "@reach/router"
+
+import { handleLogin, isLoggedIn } from "utils/auth.js"
+
 import Header from "components/Header"
 import Styles from "./LoginPage.style"
 
-const LoginPage = ({ login, hasLoginError }) => {
+const LoginPage = () => {
+  const isConnected = isLoggedIn()
+  if (isConnected) {
+    navigate(`/home`)
+  }
+
   const [passwordInput, setPasswordInput] = useState("")
+  const [hasLoginError, setHasLoginError] = useState("")
 
   function handlePasswordChange(e) {
     setPasswordInput(e.target.value)
@@ -11,7 +21,7 @@ const LoginPage = ({ login, hasLoginError }) => {
 
   return (
     <>
-      <Header isConnected={false} />
+      <Header isConnected={isConnected} />
       <Styles.Wrapper>
         <Styles.Label>
           <Styles.Title>
@@ -28,7 +38,13 @@ const LoginPage = ({ login, hasLoginError }) => {
             value={passwordInput}
             onChange={handlePasswordChange}
           />
-          <Styles.Button onClick={() => login(passwordInput)}>
+          <Styles.Button
+            onClick={() =>
+              handleLogin(passwordInput)
+                ? navigate("/home")
+                : setHasLoginError(true)
+            }
+          >
             Check In
           </Styles.Button>
         </Styles.Label>

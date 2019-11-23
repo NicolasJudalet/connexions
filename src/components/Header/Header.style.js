@@ -1,4 +1,3 @@
-import { Link } from "gatsby"
 import styled from "styled-components"
 import { appBlue, black, white } from "../../styles"
 
@@ -14,7 +13,7 @@ export default {
       props.isConnected
         ? `background: rgb(0,66,114);
         background: linear-gradient(180deg, rgba(0,66,114,1) 0%, rgba(37,146,213,1) 78%, rgba(255,255,255,1) 100%);`
-        : white}
+        : `background: ${white};`}
     position: fixed;
     width: 100vw;
     left: 0;
@@ -26,10 +25,11 @@ export default {
     font-size: 1.5em;
     ${props => `color:${props.isConnected ? white : black}`};
   `,
-  Link: styled(Link)`
-    text-decoration: none;
+  Title: styled.div`
+    border: none;
     display: flex;
     align-items: center;
+    background: none;
   `,
   Logo: styled.img`
     margin-right: 10px;
