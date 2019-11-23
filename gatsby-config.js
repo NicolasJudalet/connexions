@@ -4,11 +4,9 @@
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
 
-const dotenv = require("dotenv")
-
-if (process.env.ENVIRONMENT !== "production") {
-  dotenv.config()
-}
+require("dotenv").config({
+  path: ".env",
+})
 
 const { spaceId, accessToken } = process.env
 

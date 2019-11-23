@@ -8,9 +8,8 @@ const App = () => {
   const [hasLoginError, setHasLoginError] = useState(false)
 
   function login(passwordInput) {
-    const appPassword = "a" // To be changed for environment variable
-    setIsConnected(passwordInput === appPassword)
-    setHasLoginError(passwordInput !== appPassword)
+    setIsConnected(passwordInput === process.env.GATSBY_APP_PASSWORD)
+    setHasLoginError(passwordInput !== process.env.GATSBY_APP_PASSWORD)
   }
 
   function logout() {
