@@ -5,7 +5,6 @@ import { StaticQuery, graphql } from "gatsby"
 import Header from "components/Header"
 import PhotoHighlights from "components/PhotoHighlights"
 import TripData from "components/TripData"
-import { isLoggedIn } from "utils/auth"
 
 import Style from "./HomePage.style"
 
@@ -25,11 +24,11 @@ const HomePage = () => (
         }
       }
     `}
-    render={data => {
+    render={({ data }) => {
       return (
         <>
           <Helmet title="Connexions BLOG" />
-          <Header isConnected={isLoggedIn()} />
+          <Header />
           <Style.Wrapper>
             <TripData />
             <PhotoHighlights />
