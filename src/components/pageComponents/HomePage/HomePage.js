@@ -3,7 +3,7 @@ import Helmet from "react-helmet"
 import { StaticQuery, graphql } from "gatsby"
 
 import Header from "components/Header"
-import PhotoHighlights from "components/PhotoHighlights"
+import PhotoGrid from "components/PhotoGrid"
 import TripData from "components/TripData"
 
 import Style from "./HomePage.style"
@@ -31,7 +31,7 @@ const HomePage = () => (
           <Header />
           <Style.Wrapper>
             <TripData />
-            <PhotoHighlights />
+            <PhotoGrid />
           </Style.Wrapper>
         </>
       )

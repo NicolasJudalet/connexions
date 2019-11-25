@@ -13,11 +13,15 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
   },
   "dependencies": {
+    "date-fns": "^2.8.1",
     "dotenv": "^8.2.0",
     "gatsby": "^2.18.2",
+    "gatsby-image": "^2.2.33",
     "gatsby-plugin-manifest": "^2.2.29",
     "gatsby-plugin-resolve-src": "^2.0.0",
+    "gatsby-plugin-sharp": "^2.3.3",
     "gatsby-source-contentful": "^2.1.62",
+    "gatsby-transformer-sharp": "^2.3.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",

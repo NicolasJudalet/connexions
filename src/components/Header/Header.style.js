@@ -18,6 +18,7 @@ export default {
     width: 100vw;
     left: 0;
     top: 0;
+    z-index: 1;
   `,
   SiteTitle: styled.span`
     text-transform: uppercase;
