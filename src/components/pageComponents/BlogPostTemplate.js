@@ -1,12 +1,15 @@
 import React from "react"
+import { graphql } from "gatsby"
+
+import WithHeader from "components/Layout/WithHeader"
 
 const BlogPostTemplate = ({ data }) => {
   const title = data.contentfulBlogPost.title
   return (
-    <>
+    <WithHeader>
       <div>Hello new page !</div>
       <div>{title}</div>
-    </>
+    </WithHeader>
   )
 }
 

@@ -3,12 +3,11 @@ import { navigate } from "@reach/router"
 
 import { handleLogin, isLoggedIn } from "utils/auth.js"
 
-import Header from "components/Header"
 import Styles from "./LoginPage.style"
+import WithHeader from "components/Layout/WithHeader"
 
 const LoginPage = () => {
-  const isConnected = isLoggedIn()
-  if (isConnected) {
+  if (isLoggedIn()) {
     navigate(`/home`)
   }
 
@@ -20,8 +19,7 @@ const LoginPage = () => {
   }
 
   return (
-    <>
-      <Header isConnected={isConnected} />
+    <WithHeader>
       <Styles.Wrapper>
         <Styles.Label>
           <Styles.Title>
@@ -49,7 +47,7 @@ const LoginPage = () => {
           </Styles.Button>
         </Styles.Label>
       </Styles.Wrapper>
-    </>
+    </WithHeader>
   )
 }
 
