@@ -1,38 +1,42 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
+
 import PhotoComponent from "./PhotoComponent"
 
 import Style from "./PhotoGrid.style"
 
-const PhotoGrid = () => (
-  <StaticQuery
-    query={graphql`
-      query PhotoGrid {
-        allContentfulBlogPost {
-          nodes {
-            id
-            title
-            description {
-              description
-            }
-            eventDate
-            photo {
-              id
-            }
-          }
+const query = graphql`
+  query PhotoGrid {
+    allContentfulBlogPost(sort: { fields: eventDate, order: DESC }) {
+      nodes {
+        id
+        slug
+        title
+        description {
+          description
         }
-        allContentfulAsset {
-          edges {
-            node {
-              id
-              fluid(maxWidth: 700) {
-                ...GatsbyContentfulFluid
-              }
-            }
+        eventDate
+        photo {
+          id
+        }
+      }
+    }
+    allContentfulAsset {
+      edges {
+        node {
+          id
+          fluid(maxWidth: 700) {
+            ...GatsbyContentfulFluid
           }
         }
       }
-    `}
+    }
+  }
+`
+
+const PhotoGrid = () => (
+  <StaticQuery
+    query={query}
     render={data => {
       return (
         <Style.Wrapper>
@@ -41,11 +45,13 @@ const PhotoGrid = () => (
               edge => edge.node.id === node.photo.id
             )[0]
             return (
-              <PhotoComponent
-                key={node.id}
-                asset={asset}
-                date={node.eventDate}
-              />
+              <Style.Link to={`/${node.slug}`}>
+                <PhotoComponent
+                  key={node.id}
+                  asset={asset}
+                  date={node.eventDate}
+                />
+              </Style.Link>
             )
           })}
         </Style.Wrapper>
