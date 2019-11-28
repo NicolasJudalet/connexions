@@ -11,6 +11,7 @@ export const fontSizeXXL = "2em"
 // Colors
 export const appBlue = "#0070c0"
 export const appDarkBlue = "#004272"
+export const appLightBlue = "#2592D5"
 export const black = "#000000"
 export const white = "#ffffff"
 
