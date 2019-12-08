@@ -11,7 +11,11 @@ const PhotoComponent = ({ asset, date }) => {
       <Style.DateBanner>
         {format(new Date(date), "dd MMMM", { locale: fr })}
       </Style.DateBanner>
-      <Img alt={asset.node.id} fluid={asset.node.fluid} />
+      <Img
+        alt={asset.node.id}
+        fluid={asset.node.fluid}
+        className={"GatsbyImageWrapper"}
+      />
     </Style.Wrapper>
   )
 }

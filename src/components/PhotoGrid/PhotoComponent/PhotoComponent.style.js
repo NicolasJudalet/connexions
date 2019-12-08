@@ -2,12 +2,6 @@ import styled from "styled-components"
 import { white, normalFont } from "../../../styles"
 
 export default {
-  Wrapper: styled.div`
-    position: relative;
-    min-width: 300px;
-    flex-grow: 1;
-    justify-content: flex-start;
-  `,
   DateBanner: styled.div`
     position: absolute;
     bottom: 0%;
@@ -18,5 +12,10 @@ export default {
     width: 100%;
     font-family: ${normalFont};
     text-align: center;
+  `,
+  Wrapper: styled.div`
+    > .GatsbyImageWrapper {
+      height: 100%;
+    }
   `,
 }
