@@ -45,6 +45,10 @@ export default {
     justify-content: center;
     align-items: center;
     width: 100%;
+
+    > .GatsbyImageWrapper {
+      max-height: 80vh;
+    }
   `,
   LeftPhotoContainer: styled.div`
     margin-right: 20px;

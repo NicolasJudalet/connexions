@@ -32,7 +32,11 @@ const BlogPostTemplate = ({ data }) => {
               </Link>
             )}
           </Style.LeftPhotoContainer>
-          <Style.Img alt={title} fluid={photo.fluid} />
+          <Style.Img
+            alt={title}
+            fluid={photo.fluid}
+            className={"GatsbyImageWrapper"}
+          />
           <Style.RightPhotoContainer>
             {nextBlogPostSlug && (
               <Link to={`/${nextBlogPostSlug}`}>
