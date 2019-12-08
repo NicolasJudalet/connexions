@@ -4,7 +4,6 @@ import { white, normalFont } from "../../../styles"
 export default {
   Wrapper: styled.div`
     position: relative;
-    padding: 5px;
     min-width: 300px;
     flex-grow: 1;
     justify-content: flex-start;

@@ -5,16 +5,24 @@ import { black } from "styles"
 
 export default {
   Wrapper: styled.div`
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   `,
   Link: styled(Link)`
+    grid-column: span 2;
+    height: 0;
+    padding-top: 75%;
     position: relative;
-    padding: 5px;
-    min-width: 300px;
-    flex-grow: 1;
-    justify-content: flex-start;
     color: ${black};
+    background-color: ${black};
+
+    > div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
   `,
 }
