@@ -2,14 +2,21 @@ import React from "react"
 
 import Style from "./DaysCounter.style"
 
-const DaysCounter = () => {
-  const daysCount = 32
-  return (
-    <Style.Wrapper>
+const DaysCounter = ({ daysElapsed }) => (
+  <Style.Wrapper>
+    {daysElapsed > 0 ? (
       <Style.Text>En voyage depuis...</Style.Text>
-      <Style.CounterText>{daysCount} jours</Style.CounterText>
-    </Style.Wrapper>
-  )
-}
+    ) : daysElapsed < 0 ? (
+      <Style.Text>Départ dans ...</Style.Text>
+    ) : (
+      <Style.Text>Départ</Style.Text>
+    )}
+    {daysElapsed !== 0 ? (
+      <Style.CounterText>{Math.abs(daysElapsed)} jours</Style.CounterText>
+    ) : (
+      <Style.CounterText>aujourd'hui !</Style.CounterText>
+    )}
+  </Style.Wrapper>
+)
 
 export default DaysCounter

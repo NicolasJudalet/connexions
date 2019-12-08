@@ -3,9 +3,7 @@ import React from "react"
 import Style from "./TripTimeline.style"
 import avatar from "../../../../assets/avatar.png"
 
-const TripTimeline = () => {
-  const elapsedPercentage = 32
-
+const TripTimeline = elapsedPercentage => {
   return (
     <Style.Wrapper>
       <Style.Icon>

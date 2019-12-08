@@ -20,7 +20,7 @@ export default {
   Avatar: styled.div`
     position: relative;
     top: -25px;
-    ${props => `left: ${props.elapsedPercentage}%;`}
+    ${props => `left: calc(${props.elapsedPercentage / 100}*(100% - 50px));`}
     border-radius: 50px;
     height: 50px;
     width: 50px;
