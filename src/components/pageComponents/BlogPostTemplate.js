@@ -1,8 +1,9 @@
 import React from "react"
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { format } from "date-fns"
 import { fr } from "date-fns/locale"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 
 import WithHeader from "components/Layout/WithHeader"
 
@@ -15,10 +16,31 @@ const BlogPostTemplate = ({ data }) => {
     richTextDescription,
     photo,
   } = data.contentfulBlogPost
+
+  const previousBlogPostSlug =
+    data.previousBlogPost && data.previousBlogPost.slug
+  const nextBlogPostSlug = data.nextBlogPost && data.nextBlogPost.slug
+
   return (
     <WithHeader>
       <Style.Wrapper>
-        <Style.Img alt={title} fluid={photo.fluid} />
+        <Style.PhotoWrapper>
+          <Style.LeftPhotoContainer>
+            {previousBlogPostSlug && (
+              <Link to={`/${previousBlogPostSlug}`}>
+                <MdKeyboardArrowLeft size={"50px"} />
+              </Link>
+            )}
+          </Style.LeftPhotoContainer>
+          <Style.Img alt={title} fluid={photo.fluid} />
+          <Style.RightPhotoContainer>
+            {nextBlogPostSlug && (
+              <Link to={`/${nextBlogPostSlug}`}>
+                <MdKeyboardArrowRight size={"50px"} />
+              </Link>
+            )}
+          </Style.RightPhotoContainer>
+        </Style.PhotoWrapper>
         {eventDate && (
           <Style.Date>
             {format(new Date(eventDate), "dd MMMM", { locale: fr })}
@@ -38,7 +60,7 @@ const BlogPostTemplate = ({ data }) => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query blogPostQuery($id: String!) {
+  query blogPostQuery($id: String!, $previousId: String, $nextId: String) {
     contentfulBlogPost(id: { eq: $id }) {
       eventDate
       title
@@ -50,6 +72,12 @@ export const pageQuery = graphql`
           ...GatsbyContentfulFluid
         }
       }
+    }
+    previousBlogPost: contentfulBlogPost(id: { eq: $previousId }) {
+      slug
+    }
+    nextBlogPost: contentfulBlogPost(id: { eq: $nextId }) {
+      slug
     }
   }
 `

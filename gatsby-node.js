@@ -9,7 +9,10 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
     resolve(
       graphql(`
         {
-          allContentfulBlogPost(limit: 100) {
+          allContentfulBlogPost(
+            limit: 100
+            sort: { fields: eventDate, order: DESC }
+          ) {
             edges {
               node {
                 id
@@ -22,12 +25,19 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         if (result.errors) {
           reject(result.errors)
         }
-        result.data.allContentfulBlogPost.edges.forEach(edge => {
+        const allBlogPosts = result.data.allContentfulBlogPost.edges
+        allBlogPosts.forEach((edge, index) => {
           createPage({
             path: edge.node.slug,
             component: blogPostTemplate,
             context: {
               id: edge.node.id,
+              previousId:
+                index > 0 ? allBlogPosts[index - 1].node.id : undefined,
+              nextId:
+                index < allBlogPosts.length - 1
+                  ? allBlogPosts[index + 1].node.id
+                  : undefined,
             },
           })
         })

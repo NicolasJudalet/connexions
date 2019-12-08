@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import Img from "gatsby-image"
+
 import { appLightBlue, black, normalFont } from "styles"
 
 export default {
@@ -37,6 +38,28 @@ export default {
     > p {
       margin-top: 10px;
       text-align: left;
+    }
+  `,
+  PhotoWrapper: styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  `,
+  LeftPhotoContainer: styled.div`
+    margin-right: 20px;
+
+    > a {
+      text-decoration: none;
+      color: ${black};
+    }
+  `,
+  RightPhotoContainer: styled.div`
+    margin-left: 20px;
+
+    > a {
+      text-decoration: none;
+      color: ${black};
     }
   `,
 }
