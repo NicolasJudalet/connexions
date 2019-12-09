@@ -2,6 +2,7 @@ import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 
 import PhotoComponent from "./PhotoComponent"
+import PdfComponent from "./PdfComponent"
 
 import Style from "./PhotoGrid.style"
 
@@ -19,6 +20,11 @@ const query = graphql`
         photo {
           id
         }
+        pdfDescription {
+          file {
+            url
+          }
+        }
       }
     }
     allContentfulAsset {
@@ -34,29 +40,49 @@ const query = graphql`
   }
 `
 
+const getNodeAsset = (data, assetId) => {
+  const assets = data.allContentfulAsset.edges.filter(
+    edge => edge.node.id === assetId
+  )
+  return assets ? assets[0] : null
+}
+
 const PhotoGrid = () => (
   <StaticQuery
     query={query}
-    render={data => {
-      return (
-        <Style.Wrapper>
-          {data.allContentfulBlogPost.nodes.map(node => {
-            const asset = data.allContentfulAsset.edges.filter(
-              edge => edge.node.id === node.photo.id
-            )[0]
+    render={data => (
+      <Style.Wrapper>
+        {data.allContentfulBlogPost.nodes
+          .filter(node => node.photo || node.pdfDescription)
+          .map(node => {
+            const photo = node.photo && getNodeAsset(data, node.photo.id)
+            const pdfUrl = node.pdfDescription && node.pdfDescription.file.url
+
             return (
-              <Style.Link to={`/${node.slug}`}>
-                <PhotoComponent
-                  key={node.id}
-                  asset={asset}
-                  date={node.eventDate}
-                />
-              </Style.Link>
+              <>
+                {photo && (
+                  <Style.Link to={`/${node.slug}`}>
+                    <PhotoComponent
+                      key={node.id}
+                      asset={photo}
+                      date={node.eventDate}
+                    />
+                  </Style.Link>
+                )}
+                {pdfUrl && (
+                  <Style.Link to={`/${node.slug}`}>
+                    <PdfComponent
+                      key={node.id}
+                      pdfUrl={pdfUrl}
+                      date={node.eventDate}
+                    />
+                  </Style.Link>
+                )}
+              </>
             )
           })}
-        </Style.Wrapper>
-      )
-    }}
+      </Style.Wrapper>
+    )}
   />
 )
 

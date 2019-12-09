@@ -17,7 +17,7 @@ export default {
     color: ${black};
     background-color: ${black};
 
-    > div {
+    > .PhotoComponent {
       position: absolute;
       top: 0;
       left: 0;
