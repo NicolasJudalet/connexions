@@ -24,6 +24,12 @@ const BlogPostTemplate = ({ data }) => {
   return (
     <WithHeader>
       <Style.Wrapper>
+        {eventDate && (
+          <Style.Date>
+            {format(new Date(eventDate), "dd MMMM", { locale: fr })}
+          </Style.Date>
+        )}
+        {title && <Style.Title>{title}</Style.Title>}
         <Style.PhotoWrapper>
           <Style.LeftPhotoContainer>
             {previousBlogPostSlug && (

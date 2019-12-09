@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import Img from "gatsby-image"
 
-import { appLightBlue, black, normalFont } from "styles"
+import { appLightBlue, black, marginS, normalFont } from "styles"
 
 export default {
   Wrapper: styled.div`
@@ -25,7 +25,7 @@ export default {
   Title: styled.h1`
     width: 80%;
     max-width: 700px;
-    margin: 0;
+    margin: 0 0 ${marginS};
     text-align: left;
     font-weight: bold;
     font-family: ${normalFont};
