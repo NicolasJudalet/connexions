@@ -1,11 +1,13 @@
 import React from "react"
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md"
+
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { format } from "date-fns"
 import { fr } from "date-fns/locale"
 import { graphql, Link } from "gatsby"
 
 import WithHeader from "components/Layout/WithHeader"
+import PdfViewer from "components/PdfViewer"
 
 import Style from "./BlogPostTemplate.style"
 
@@ -15,6 +17,7 @@ const BlogPostTemplate = ({ data }) => {
     eventDate,
     richTextDescription,
     photo,
+    pdfDescription,
   } = data.contentfulBlogPost
 
   const previousBlogPostSlug =
@@ -38,11 +41,14 @@ const BlogPostTemplate = ({ data }) => {
               </Link>
             )}
           </Style.LeftPhotoContainer>
-          <Style.Img
-            alt={title}
-            fluid={photo.fluid}
-            className={"GatsbyImageWrapper"}
-          />
+          {photo && (
+            <Style.Img
+              alt={title}
+              fluid={photo.fluid}
+              className={"GatsbyImageWrapper"}
+            />
+          )}
+          {pdfDescription && <PdfViewer pdf={pdfDescription.file.url} />}
           <Style.RightPhotoContainer>
             {nextBlogPostSlug && (
               <Link to={`/${nextBlogPostSlug}`}>
@@ -51,12 +57,6 @@ const BlogPostTemplate = ({ data }) => {
             )}
           </Style.RightPhotoContainer>
         </Style.PhotoWrapper>
-        {eventDate && (
-          <Style.Date>
-            {format(new Date(eventDate), "dd MMMM", { locale: fr })}
-          </Style.Date>
-        )}
-        {title && <Style.Title>{title}</Style.Title>}
         {richTextDescription && (
           <Style.Description>
             {documentToReactComponents(richTextDescription.json)}
@@ -80,6 +80,11 @@ export const pageQuery = graphql`
       photo {
         fluid(maxWidth: 700) {
           ...GatsbyContentfulFluid
+        }
+      }
+      pdfDescription {
+        file {
+          url
         }
       }
     }
