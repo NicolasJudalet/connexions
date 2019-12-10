@@ -35,7 +35,13 @@ const BlogPostTemplate = ({ data }) => {
           </Style.Date>
         )}
         {title && <Style.Title>{title}</Style.Title>}
-        {tags && tags.map(tag => <Tag label={tag.label} />)}
+        {tags && (
+          <Style.TagList>
+            {tags.map(tag => (
+              <Tag key={tag.id} label={tag.label} />
+            ))}
+          </Style.TagList>
+        )}
         <Style.PhotoWrapper>
           <Style.LeftPhotoContainer>
             {previousBlogPostSlug && (
@@ -91,6 +97,7 @@ export const pageQuery = graphql`
         }
       }
       tags {
+        id
         label
       }
     }

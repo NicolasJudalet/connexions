@@ -1,5 +1,7 @@
 import React from "react"
 
-const Tag = ({ label }) => <div>{label}</div>
+import Style from "./Tag.style"
+
+const Tag = ({ label }) => <Style.Tag>{label}</Style.Tag>
 
 export default Tag

@@ -16,6 +16,7 @@ export const black = "#000000"
 export const white = "#ffffff"
 
 // Margins
+export const marginXS = "10px"
 export const marginS = "20px"
 export const marginM = "30px"
 export const marginL = "40px"

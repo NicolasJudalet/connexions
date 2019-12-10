@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import Img from "gatsby-image"
 
-import { appLightBlue, black, marginS, normalFont } from "styles"
+import { appLightBlue, black, marginXS, normalFont } from "styles"
 
 export default {
   Wrapper: styled.div`
@@ -25,7 +25,7 @@ export default {
   Title: styled.h1`
     width: 80%;
     max-width: 700px;
-    margin: 0 0 ${marginS};
+    margin: 0;
     text-align: left;
     font-weight: bold;
     font-family: ${normalFont};
@@ -36,7 +36,7 @@ export default {
     max-width: 700px;
     font-family: ${normalFont};
     > p {
-      margin-top: 10px;
+      margin-top: ${marginXS};
       text-align: left;
     }
   `,
@@ -45,6 +45,7 @@ export default {
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-top: ${marginXS};
 
     > .GatsbyImageWrapper {
       max-height: 80vh;
@@ -65,5 +66,12 @@ export default {
       text-decoration: none;
       color: ${black};
     }
+  `,
+  TagList: styled.div`
+    padding: 10px;
+    width: 80%;
+    max-width: 700px;
+    display: flex;
+    flex-flow: wrap;
   `,
 }
