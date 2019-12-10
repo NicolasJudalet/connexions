@@ -8,6 +8,7 @@ import { graphql, Link } from "gatsby"
 
 import WithHeader from "components/Layout/WithHeader"
 import PdfViewer from "components/PdfViewer"
+import Tag from "components/Tag"
 
 import Style from "./BlogPostTemplate.style"
 
@@ -34,7 +35,7 @@ const BlogPostTemplate = ({ data }) => {
           </Style.Date>
         )}
         {title && <Style.Title>{title}</Style.Title>}
-        {tags && <div>{tags[0].label}</div>}
+        {tags && tags.map(tag => <Tag label={tag.label} />)}
         <Style.PhotoWrapper>
           <Style.LeftPhotoContainer>
             {previousBlogPostSlug && (
