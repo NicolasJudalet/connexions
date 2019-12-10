@@ -18,6 +18,7 @@ const BlogPostTemplate = ({ data }) => {
     richTextDescription,
     photo,
     pdfDescription,
+    tags,
   } = data.contentfulBlogPost
 
   const previousBlogPostSlug =
@@ -33,6 +34,7 @@ const BlogPostTemplate = ({ data }) => {
           </Style.Date>
         )}
         {title && <Style.Title>{title}</Style.Title>}
+        {tags && <div>{tags[0].label}</div>}
         <Style.PhotoWrapper>
           <Style.LeftPhotoContainer>
             {previousBlogPostSlug && (
@@ -86,6 +88,9 @@ export const pageQuery = graphql`
         file {
           url
         }
+      }
+      tags {
+        label
       }
     }
     previousBlogPost: contentfulBlogPost(id: { eq: $previousId }) {
