@@ -18,7 +18,7 @@ const query = graphql`
   }
 `
 
-const TagsFilters = () => (
+const TagsFilters = ({ activatedTags, setActivatedTags }) => (
   <StaticQuery
     query={query}
     render={data => (
@@ -27,7 +27,12 @@ const TagsFilters = () => (
           <Style.Wrapper>
             <Style.Text>Filtrez les articles par thème :</Style.Text>
             {data.allContentfulTag.edges.map(edge => (
-              <TagFilter label={edge.node.label} activated={false} />
+              <TagFilter
+                id={edge.node.id}
+                label={edge.node.label}
+                activatedTags={activatedTags}
+                setActivatedTags={setActivatedTags}
+              />
             ))}
           </Style.Wrapper>
         )}

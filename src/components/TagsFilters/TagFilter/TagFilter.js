@@ -1,16 +1,17 @@
-import React, { useState } from "react"
+import React from "react"
 
 import Style from "./TagFilter.style"
 
-const TagFilter = ({ label }) => {
-  const [filterActivated, setFilterActivated] = useState(false)
-
+const TagFilter = ({ id, label, activatedTags, setActivatedTags }) => {
   const toggleFilterActivated = () => {
-    setFilterActivated(!filterActivated)
+    setActivatedTags({ ...activatedTags, [id]: !activatedTags[id] })
   }
 
   return (
-    <Style.Tag activated={filterActivated} onClick={toggleFilterActivated}>
+    <Style.Tag
+      activated={activatedTags && activatedTags[id]}
+      onClick={toggleFilterActivated}
+    >
       {label}
     </Style.Tag>
   )
