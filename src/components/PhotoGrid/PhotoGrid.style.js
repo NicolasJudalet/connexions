@@ -7,10 +7,14 @@ export default {
   Wrapper: styled.div`
     display: grid;
     grid-gap: 5px;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    ${props =>
+      `grid-template-columns: repeat(${Math.min(
+        5,
+        1 + Math.floor(props.screenWidth / 300)
+      )}, 1fr)`};
   `,
   Link: styled(Link)`
-    grid-column: span 2;
+    grid-column: span 1;
     height: 0;
     padding-top: 75%;
     position: relative;

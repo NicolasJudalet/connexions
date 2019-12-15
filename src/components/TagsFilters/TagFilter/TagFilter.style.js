@@ -12,6 +12,7 @@ export default {
     font-family: ${normalFont};
     font-size: 0.9em;
     margin-left: 3px;
+    margin-bottom: 3px;
     cursor: pointer;
     outline: none;
   `,

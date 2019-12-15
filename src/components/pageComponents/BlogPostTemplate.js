@@ -51,13 +51,13 @@ const BlogPostTemplate = ({ data }) => {
           </Style.TagList>
         )}
         <Style.PhotoWrapper>
-          <Style.LeftPhotoContainer>
+          <Style.ArrowContainer>
             {previousBlogPostSlug && (
               <Link to={`/${previousBlogPostSlug}`}>
                 <MdKeyboardArrowLeft size={"50px"} />
               </Link>
             )}
-          </Style.LeftPhotoContainer>
+          </Style.ArrowContainer>
           {photo && (
             <Style.Img
               alt={title}
@@ -66,13 +66,13 @@ const BlogPostTemplate = ({ data }) => {
             />
           )}
           {pdfDescription && <PdfViewer pdf={pdfDescription.file.url} />}
-          <Style.RightPhotoContainer>
+          <Style.ArrowContainer>
             {nextBlogPostSlug && (
               <Link to={`/${nextBlogPostSlug}`}>
                 <MdKeyboardArrowRight size={"50px"} />
               </Link>
             )}
-          </Style.RightPhotoContainer>
+          </Style.ArrowContainer>
         </Style.PhotoWrapper>
         {richTextDescription && (
           <Style.Description>

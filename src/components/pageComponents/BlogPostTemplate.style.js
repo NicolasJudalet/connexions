@@ -51,17 +51,8 @@ export default {
       max-height: 80vh;
     }
   `,
-  LeftPhotoContainer: styled.div`
-    margin-right: 20px;
-
-    > a {
-      text-decoration: none;
-      color: ${black};
-    }
-  `,
-  RightPhotoContainer: styled.div`
-    margin-left: 20px;
-
+  ArrowContainer: styled.div`
+    width: 50px;
     > a {
       text-decoration: none;
       color: ${black};
