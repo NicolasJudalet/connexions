@@ -14,9 +14,6 @@ const query = graphql`
         id
         slug
         title
-        description {
-          description
-        }
         eventDate
         photo {
           id
