@@ -12,6 +12,14 @@ import Tag from "components/Tag"
 
 import Style from "./BlogPostTemplate.style"
 
+const options = {
+  renderText: text => {
+    return text.split("\n").reduce((children, textSegment, index) => {
+      return [...children, index > 0 && <br key={index} />, textSegment]
+    }, [])
+  },
+}
+
 const BlogPostTemplate = ({ data }) => {
   const {
     title,
@@ -68,7 +76,7 @@ const BlogPostTemplate = ({ data }) => {
         </Style.PhotoWrapper>
         {richTextDescription && (
           <Style.Description>
-            {documentToReactComponents(richTextDescription.json)}
+            {documentToReactComponents(richTextDescription.json, options)}
           </Style.Description>
         )}
       </Style.Wrapper>
