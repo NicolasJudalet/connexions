@@ -1,5 +1,5 @@
 // Font families
-export const normalFont = "Avenir"
+export const normalFont = "Avenir, Helvetica, sans-serif"
 
 // Font sizes
 export const fontSizeS = "0.8em"
