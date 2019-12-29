@@ -80,7 +80,7 @@ const PhotoGrid = ({ activatedTags }) => (
 
             return (
               <>
-                {photo && (
+                {photo ? (
                   <Style.Link to={`/${node.slug}`}>
                     <PhotoComponent
                       key={node.id}
@@ -88,15 +88,16 @@ const PhotoGrid = ({ activatedTags }) => (
                       date={node.eventDate}
                     />
                   </Style.Link>
-                )}
-                {pdfUrl && (
-                  <Style.Link to={`/${node.slug}`}>
-                    <PdfComponent
-                      key={node.id}
-                      pdfUrl={pdfUrl}
-                      date={node.eventDate}
-                    />
-                  </Style.Link>
+                ) : (
+                  pdfUrl && (
+                    <Style.Link to={`/${node.slug}`}>
+                      <PdfComponent
+                        key={node.id}
+                        pdfUrl={pdfUrl}
+                        date={node.eventDate}
+                      />
+                    </Style.Link>
+                  )
                 )}
               </>
             )

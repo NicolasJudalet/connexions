@@ -58,14 +58,15 @@ const BlogPostTemplate = ({ data }) => {
               </Link>
             )}
           </Style.ArrowContainer>
-          {photo && (
+          {photo ? (
             <Style.Img
               alt={title}
               fluid={photo.fluid}
               className={"GatsbyImageWrapper"}
             />
+          ) : (
+            pdfDescription && <PdfViewer pdf={pdfDescription.file.url} />
           )}
-          {pdfDescription && <PdfViewer pdf={pdfDescription.file.url} />}
           <Style.ArrowContainer>
             {nextBlogPostSlug && (
               <Link to={`/${nextBlogPostSlug}`}>
