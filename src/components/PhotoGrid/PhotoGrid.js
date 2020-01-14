@@ -33,7 +33,10 @@ const query = graphql`
         node {
           id
           fluid(maxWidth: 700) {
-            ...GatsbyContentfulFluid
+            base64
+            src
+            srcSet
+            sizes
           }
         }
       }
