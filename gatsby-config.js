@@ -23,6 +23,7 @@ module.exports = {
       resolve: "gatsby-plugin-manifest",
       options: {
         icon: "assets/america-icon.png",
+        start_url: "/",
       },
     },
     "gatsby-plugin-resolve-src",
