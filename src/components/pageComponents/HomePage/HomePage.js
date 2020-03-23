@@ -19,6 +19,25 @@ const query = graphql`
         }
       }
     }
+    allContentfulBlogPost(sort: { fields: eventDate, order: DESC }) {
+      nodes {
+        id
+        slug
+        title
+        eventDate
+        photo {
+          id
+        }
+        pdfDescription {
+          file {
+            url
+          }
+        }
+        tags {
+          id
+        }
+      }
+    }
   }
 `
 
@@ -53,7 +72,10 @@ const HomePage = () => {
                 activatedTags={activatedTags}
                 setActivatedTags={setActivatedTags}
               />
-              <PhotoGrid activatedTags={activatedTags} />
+              <PhotoGrid
+                activatedTags={activatedTags}
+                allContentfulBlogPostNodes={data.allContentfulBlogPost.nodes}
+              />
             </WithHeader>
           </>
         )

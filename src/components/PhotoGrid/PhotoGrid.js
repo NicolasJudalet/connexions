@@ -9,25 +9,6 @@ import Style from "./PhotoGrid.style"
 
 const query = graphql`
   query PhotoGrid {
-    allContentfulBlogPost(sort: { fields: eventDate, order: DESC }) {
-      nodes {
-        id
-        slug
-        title
-        eventDate
-        photo {
-          id
-        }
-        pdfDescription {
-          file {
-            url
-          }
-        }
-        tags {
-          id
-        }
-      }
-    }
     allContentfulAsset {
       edges {
         node {
@@ -66,12 +47,12 @@ const getPostsFilteredByTag = activatedTags => node => {
   return !isEmpty(intersection(activeFiltersIds, nodeTagsIds))
 }
 
-const PhotoGrid = ({ activatedTags }) => (
+const PhotoGrid = ({ activatedTags, allContentfulBlogPostNodes }) => (
   <StaticQuery
     query={query}
     render={data => (
       <Style.Wrapper>
-        {data.allContentfulBlogPost.nodes
+        {allContentfulBlogPostNodes
           .filter(node => node.photo || node.pdfDescription)
           .filter(getPostsFilteredByTag(activatedTags))
           .map(node => {
