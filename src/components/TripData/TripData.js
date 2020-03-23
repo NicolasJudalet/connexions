@@ -15,7 +15,7 @@ const getElapsedPercentage = (tripStartDate, tripEndDate) =>
     ((new Date() - tripStartDate) / (tripEndDate - tripStartDate)) * 100
   )
 
-const TripData = () => {
+const TripData = ({ blogPostTooltipsInfo }) => {
   const tripStartDate = new Date("2019-12-29")
   const tripEndDate = new Date("2020-05-14")
 
@@ -24,6 +24,7 @@ const TripData = () => {
       <DaysCounter daysElapsed={getDaysElapsed(tripStartDate)} />
       <TripTimeline
         elapsedPercentage={getElapsedPercentage(tripStartDate, tripEndDate)}
+        blogPostTooltipsInfo={blogPostTooltipsInfo}
       />
     </Style.Wrapper>
   )

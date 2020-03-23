@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import Helmet from "react-helmet"
 import { StaticQuery, graphql } from "gatsby"
-import { isEmpty } from "lodash"
+import { isEmpty, pick } from "lodash"
 
 import PhotoGrid from "components/PhotoGrid"
 import TripData from "components/TripData"
@@ -63,11 +63,15 @@ const HomePage = () => {
           )
         }
 
+        const blogPostTooltipsInfo = data.allContentfulBlogPost.nodes.map(
+          node => pick(node, ["id", "title", "slug", "eventDate"])
+        )
+
         return (
           <>
             <Helmet title="Connexions BLOG" />
             <WithHeader>
-              <TripData />
+              <TripData blogPostTooltipsInfo={blogPostTooltipsInfo} />
               <TagsFilters
                 activatedTags={activatedTags}
                 setActivatedTags={setActivatedTags}
