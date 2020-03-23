@@ -69,7 +69,7 @@ const HomePage = () => {
 
         return (
           <>
-            <Helmet title="Connexions BLOG" />
+            <Helmet title="Voyage en Pays Andin" />
             <WithHeader>
               <TripData blogPostTooltipsInfo={blogPostTooltipsInfo} />
               <TagsFilters

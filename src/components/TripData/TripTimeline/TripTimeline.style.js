@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Link } from "gatsby"
 
 import {
   appBlue,
@@ -16,6 +17,7 @@ export default {
     flex-grow: 1;
   `,
   Line: styled.div`
+    position: relative;
     border: solid 1px;
     border-color: ${appBlue};
     flex-grow: 1;
@@ -36,12 +38,13 @@ export default {
     width: 100%;
     border-radius: 50px;
   `,
-  BlogPostMarker: styled.div`
+  BlogPostMarker: styled(Link)`
     width: ${markerSizeS};
     height: ${markerSizeS};
     border-radius: ${markerSizeS};
-    position: relative;
-    top: calc(-50px - ${markerSizeS} / 2);
+    position: absolute;
+    top: calc(-${markerSizeS} / 2);
+    ${props => `left: calc(${props.elapsedPercentage / 100}*(100% - 50px));`}
     background-color: ${appBlue};
     cursor: pointer;
 
@@ -58,7 +61,7 @@ export default {
       overflow: hidden;
       text-overflow: ellipsis;
 
-      padding: 5px 0;
+      padding: 5px;
       border-radius: 6px;
       border: solid 1px ${appBlue};
       background-color: ${white};

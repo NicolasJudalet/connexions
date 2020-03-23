@@ -1,9 +1,11 @@
 import React from "react"
+import { format } from "date-fns"
+import { fr } from "date-fns/locale"
 
 import Style from "./TripTimeline.style"
 import avatar from "../../../../assets/avatar.png"
 
-const TripTimeline = ({ elapsedPercentage }) => {
+const TripTimeline = ({ elapsedPercentage, blogPostTooltipsInfo }) => {
   return (
     <Style.Wrapper>
       <Style.Icon>
@@ -16,15 +18,22 @@ const TripTimeline = ({ elapsedPercentage }) => {
         <Style.Avatar elapsedPercentage={elapsedPercentage}>
           <Style.Image src={avatar} alt="Nico et Laeti" />
         </Style.Avatar>
-        <Style.BlogPostMarker>
-          <div className={"tooltiptext"}>
-            <span>11 novembre</span>
-            <br />
-            <span className={"blogPostTitle"}>
-              Titre d'article très loooooong
-            </span>
-          </div>
-        </Style.BlogPostMarker>
+        {blogPostTooltipsInfo.map(tooltipInfo => (
+          <Style.BlogPostMarker
+            elapsedPercentage={tooltipInfo.elapsedPercentage}
+            to={tooltipInfo.slug}
+          >
+            <div className={"tooltiptext"}>
+              <span>
+                {format(new Date(tooltipInfo.eventDate), "dd MMMM", {
+                  locale: fr,
+                })}
+              </span>
+              <br />
+              <span className={"blogPostTitle"}>{tooltipInfo.title}</span>
+            </div>
+          </Style.BlogPostMarker>
+        ))}
       </Style.Line>
       <Style.Icon>
         {" "}

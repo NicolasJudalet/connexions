@@ -23,7 +23,6 @@ export default {
   `,
   SiteTitle: styled.span`
     font-family: Helvetica, sans-serif;
-    text-transform: uppercase;
     font-family: sans-serif;
     font-size: 1.5em;
     color: ${white};

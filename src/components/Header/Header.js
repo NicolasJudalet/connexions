@@ -10,8 +10,8 @@ export default () => {
     <Style.Wrapper>
       <HomeButton />
       <Style.Title>
-        <Style.Logo src={whiteLogo} alt="Connexions App Logo" />
-        <Style.SiteTitle>Connexions</Style.SiteTitle>
+        <Style.Logo src={whiteLogo} alt="Voyage en Pays Andin" />
+        <Style.SiteTitle>Voyage en Pays Andin</Style.SiteTitle>
       </Style.Title>
     </Style.Wrapper>
   )
