@@ -21,3 +21,6 @@ export const marginXS = "10px"
 export const marginS = "20px"
 export const marginM = "30px"
 export const marginL = "40px"
+
+// Marker sizes
+export const markerSizeS = "8px"
