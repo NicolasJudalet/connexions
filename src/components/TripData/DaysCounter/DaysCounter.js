@@ -2,9 +2,11 @@ import React from "react"
 
 import Style from "./DaysCounter.style"
 
-const DaysCounter = ({ daysElapsed }) => (
+const DaysCounter = ({ daysElapsed, tripTotalDuration }) => (
   <Style.Wrapper>
-    {daysElapsed > 0 ? (
+    {daysElapsed === tripTotalDuration ? (
+      <Style.Text>Voyage terminé</Style.Text>
+    ) : daysElapsed > 0 ? (
       <Style.Text>En voyage depuis...</Style.Text>
     ) : daysElapsed < 0 ? (
       <Style.Text>Départ dans ...</Style.Text>

@@ -49,7 +49,10 @@ const TripData = ({ blogPostTooltipsInfo }) => {
 
   return (
     <Style.Wrapper>
-      <DaysCounter daysElapsed={getDaysElapsed(tripStartDate, tripEndDate)} />
+      <DaysCounter
+        daysElapsed={getDaysElapsed(tripStartDate, tripEndDate)}
+        tripTotalDuration={differenceInDays(tripEndDate, tripStartDate)}
+      />
       <TripTimeline
         elapsedPercentage={getElapsedPercentage(
           new Date(),
