@@ -6,13 +6,19 @@ import Style from "./TripData.style"
 import DaysCounter from "./DaysCounter"
 import TripTimeline from "./TripTimeline"
 
-const getDaysElapsed = tripStartDate =>
-  differenceInDays(startOfDay(new Date()), tripStartDate)
+const getDaysElapsed = (tripStartDate, tripEndDate) =>
+  Math.min(
+    differenceInDays(startOfDay(new Date()), tripStartDate),
+    differenceInDays(tripEndDate, tripStartDate)
+  )
 
 const getElapsedPercentage = (eventDate, tripStartDate, tripEndDate) =>
-  Math.max(
-    0,
-    ((eventDate - tripStartDate) / (tripEndDate - tripStartDate)) * 100
+  Math.min(
+    100,
+    Math.max(
+      0,
+      ((eventDate - tripStartDate) / (tripEndDate - tripStartDate)) * 100
+    )
   )
 
 const enrichBlogPostTooltipsInfoWithPercentage = (
@@ -43,7 +49,7 @@ const TripData = ({ blogPostTooltipsInfo }) => {
 
   return (
     <Style.Wrapper>
-      <DaysCounter daysElapsed={getDaysElapsed(tripStartDate)} />
+      <DaysCounter daysElapsed={getDaysElapsed(tripStartDate, tripEndDate)} />
       <TripTimeline
         elapsedPercentage={getElapsedPercentage(
           new Date(),
