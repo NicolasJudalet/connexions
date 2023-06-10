@@ -18,7 +18,7 @@
     "browser-monads": "^1.0.0",
     "date-fns": "^2.8.1",
     "dotenv": "^8.2.0",
-    "gatsby": "^2.19",
+    "gatsby": "^4.25",
     "gatsby-image": "^2.2.33",
     "gatsby-plugin-manifest": "^2.2.29",
     "gatsby-plugin-resolve-src": "^2.0.0",
